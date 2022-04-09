@@ -1,0 +1,9 @@
+học vuejs 
+###cài nodejs link: https://nodejs.org
+
+### cài vuejs global https://cli.vuejs.org/guide/installation.html
+    npm install -g @vue/cli  ### mở cmd copy chạy lệnh
+    vue --version ### chạy lệnh check vuejs đã được install chưa
+### tiếp tục mở đến thư mục muốn tạo project mở cmd tại thu mục đó lên chạy lệnh bên dưới: 
+    vue create hello-world ### tạo project cho vuejs (lưu ý: hello-world là tên project muốn tạo)
+    npm run serve ### chạy localhost (lưu ý để chạy được cần cd vào project vuejs vừa tạo ở trên vd: cd hello-world )
