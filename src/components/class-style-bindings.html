@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <title>Class and Style Bindings</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <div v-bind:style="objectStyle">
+                <h1>FirsrName: {{ firsrName }}</h1>
+                <p>{{ about }}</p>
+                <input v-model="firsrName" type="text" name="" id=""
+                    placeholder="FirsrName">
+                <br>
+                <textarea v-model="about" name="" id="" cols="30" rows="10"></textarea>
+                <br>
+                <div class="demo" v-bind:class="ojbclass"></div>
+                <button v-on:click="changleActive">changleActive</button>
+                <button v-on:click="changleError">changleError</button>
+
+                <div v-bind:style="{ color: activeColor, fontSize: fontSize +
+                    'px', marginTop: '20px'}">
+                    Test bindings
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .demo {
+                width: 200px;
+                height: 200px;
+                background-color: black;
+            }
+
+            .active {
+                background-color: aqua;
+            }
+
+            .error {
+                background-color: brown;
+            }
+        </style>
+
+    </body>
+    <script src="../main.js"></script>
+</html>
+

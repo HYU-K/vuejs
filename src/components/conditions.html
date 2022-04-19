@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Conditions</title>
+</head>
+<body>
+    <div class="" id="app">
+        <div class="login" v-if="tabSelected === 'login'">
+            <h2>form đăng nhập</h2>
+            <input type="text" placeholder="nhập username" name="" id=""><br>
+            <input type="text" placeholder="nhập password" name="" id=""><br>
+        </div>
+        <div class="register" v-else>
+            <h2>form đăng ký</h2>
+            <input type="text" placeholder="nhập username" name="" id=""><br>
+            <input type="text" placeholder="nhập password" name="" id=""><br>
+            <input type="text" placeholder="nhập lại password" name="" id="">
+        </div>
+
+        <ul>
+            <li v-on:click="changletab('login')">đăng nhập</li>
+            <li v-on:click="changletab('register')">đăng ký</li>
+        </ul>
+    </div>
+
+    <!--v-if sẽ remote html-->
+    <!--v-show sẽ display:none;-->
+
+    <style>
+        .login, .register {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 500px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin: 0 0 20px 0;
+        }
+
+        input {
+            margin: 0 0 10px 20px;
+        }
+
+        ul li {
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px 15px;
+            border: 1px solid #000;
+        }
+    </style>
+
+</body>
+<script src="../main.js"></script>
+</html>

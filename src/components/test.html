@@ -1,21 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-    
-</head>
-<body>
-    <div class="" id="app">
-        <h1>{{ title }}</h1>
-        <div>{{ check ? 'đúng' : 'sai' }}</div>
-        <h2>{{ say('world') }}</h2>
-        <p>{{ formatPrice() }}</p>
-        <a v-bind:href="url">{{ title }}</a>
-    </div>
-</body>
-<script src="../main.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <h3>giỏ hàng ({{ cartnumber }})</h3>
+            <div class="products">
+                <div class="item_left">
+                    <img v-bind:src="getProducts.image" alt="">
+                </div>
+                <div class="item_right">
+                    <h1>{{ title }}</h1>
+                    <a v-bind:href="url">{{ title }}</a>
+                    <div>{{ check ? 'đúng' : 'sai' }}</div>
+                    <h2>{{ say('world') }}</h2>
+                    <p>{{ formatFinalPrice() }}</p>
+                    <div style="display: flex;">
+                        <p>{{ formatOriginalPrice() }}</p>
+                        <p style="margin-left: 20px;">-{{ sale * 100 }}%</p>
+                    </div>
+                    <p v-if="getProducts.quantity> 0">còn lại: {{
+                        getProducts.quantity }} sản phẩm</p>
+                    <p v-else="getProducts.quantity <= 0">đã hết</p>
+                    <p>màu sắc: <span>{{ getProducts.textColor }}</span></p>
+                    <ul class="list-item">
+                        <li v-bind:class="{ active: selectedProduct == index }"
+                            class="item-image" v-for="(item, index) in
+                            listproductDetail"
+                            v-on:click="handerclickColor(index)">
+                            <img v-bind:src="item.image"
+                                v-bind:alt="item.textColor">
+                        </li>
+                    </ul>
+                    <button v-on:click="AddToCart">add to cart</button>
+                    <ul>
+                        <li v-for="item in listDeas">{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id='example-3'>
+            <input type="checkbox" id="com-chien-toi" value="Cơm chiên tỏi"
+                v-model="checkedNames">
+            <label for="com-chien-toi">Cơm chiên tỏi</label><br>
+            <input type="checkbox" id="dot-bi-xao-toi" value="Đọt bí xào tỏi"
+                v-model="checkedNames">
+            <label for="dot-bi-xao-toi">Đọt bí xào tỏi</label><br>
+            <input type="checkbox" id="canh-rau-rung" value="Canh rau rừng"
+                v-model="checkedNames">
+            <label for="canh-rau-rung">Canh rau rừng</label>
+            <br>
+            <span>Món đã chọn: {{ checkedNames }}</span>
+        </div>
+
+        <style>
+            .products {
+                display: flex;
+            }
+            .item_left {
+                width: 500px;
+                height: 500px;
+                padding: 15px;
+                border: 1px solid #000;
+            }
+            .item_right {
+                padding-left: 50px;
+            }
+            .list-item {
+                display: flex;
+                align-items: center;
+            }
+            .item-image {
+                width: 60px;
+                height: 60px;
+                border: 1px solid #ccc;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 5px;
+                padding: 5px;
+                cursor: pointer;
+            }
+            .item-image:hover {
+                border: 1px solid red;
+            }
+            .active {
+                border: 1px solid red;
+            }
+            img {
+                max-width: 100%;
+                overflow: hidden;
+            }
+        </style>
+    </body>
+
+    <script src="../main.js"></script>
 </html>

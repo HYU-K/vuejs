@@ -5,10 +5,11 @@
 </template>
 
 <script>
-import Trello from './components/ToDoList.vue';
+import Trello from './components/Trello.vue';
 
 export default {
   name: 'App',
+
   components: {
     Trello,
   }
@@ -21,3 +22,4 @@ body {
   background: green;
 }
 </style>
+
